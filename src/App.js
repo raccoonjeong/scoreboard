@@ -4,17 +4,13 @@ import {Header} from './components/Header';
 import {Player} from "./components/Player";
 
 
-
-
-
-
 class App extends React.Component{
   state = {
     players: [
-      {name: 'LDK', id: 1},
-      {name: 'HONG', id: 2},
-      {name: 'KIM', id: 3},
-      {name: 'PARK', id: 4},
+      {name: 'LDK', id: 1, score: 0},
+      {name: 'HONG', id: 2, score: 0},
+      {name: 'KIM', id: 3, score: 0},
+      {name: 'PARK', id: 4, score: 0},
     ]
   };
 
@@ -27,17 +23,16 @@ class App extends React.Component{
 
   render() {
     return (
-      <marquee>
       <div className="scoreboard">
         <Header title="My Scoreboard" totalPlayers={11}/>
         {
           this.state.players.map(player => (
             <Player name={player.name} id={player.id} key={player.id}
+                    score={player.score}
                     removePlayer={this.handleRemovePlayer}/>
           ))
         }
       </div>
-      </marquee>
     );
   }
 }
