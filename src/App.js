@@ -38,6 +38,9 @@ class App extends React.Component{
       })
       return {players: [...prevState.players]} // 새 바구니를 가져와서 기존 바구니 내용을 넣는다. 딥카피
     })
+  };
+  handleAddPlayer = (name) => {
+    console.log('add player name: ', name);
   }
 
   render() {
@@ -52,7 +55,7 @@ class App extends React.Component{
                     changeScore={this.handleChangeScore}/>
           ))
         }
-        <AddPlayerForm/>
+        <AddPlayerForm addPlayer={this.handleAddPlayer}/>
       </div>
     );
   }
