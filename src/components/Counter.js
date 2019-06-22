@@ -16,12 +16,14 @@ export class Counter extends React.Component {
       return {score:prevState.score+=delta};
     })
   };
-  render() {
+  render() { // onClick 안에 들어가는 것은 함수로 감싸야한다.
     return (
       <div className="counter">
-        <button className="counter-action decrement" onClick = {()=>this.handleScore(-1)}> -</button>
+        <button className="counter-action decrement"
+                onClick = {() => this.props.changeScore(this.props.id, -1)}> -</button>
         <span className="counter-score">{this.props.score}</span>
-        <button className="counter-action increment" onClick = {()=>this.handleScore(1)}> +</button>
+        <button className="counter-action increment"
+                onClick = {() => this.props.changeScore(this.props.id, 1)}> +</button>
       </div>)
   }
 }
