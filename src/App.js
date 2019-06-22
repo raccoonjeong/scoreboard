@@ -6,6 +6,8 @@ import {AddPlayerForm} from "./components/AddPlayerForm";
 
 
 class App extends React.Component{
+  maxId = 4;
+
   state = {
     players: [
       {name: 'LDK', id: 1, score: 0},
@@ -41,7 +43,17 @@ class App extends React.Component{
   };
   handleAddPlayer = (name) => {
     console.log('add player name: ', name);
-  }
+    this.setState(prevState => {
+      prevState.players.push({
+        name, // 키 밸류 같으면 한쪽 생략 가능
+        id: ++this.maxId,
+        score: 0
+      });
+      return {
+        players: [...prevState.players]
+      }
+    })
+  };
 
   render() {
     return (
