@@ -1,15 +1,7 @@
 import React from 'react';
 import './App.css';
+import {Header} from './components/Header';
 
-const Header = ({title, totalPlayers}) => {
-  // destruct assignment
-  return (
-    <header className="header">
-      <h1 className="h1">{title}</h1>
-      <span className="stats">{totalPlayers}</span>
-    </header>
-  );
-};
 
 const Player = (props) => (
   <div className="player">
@@ -70,6 +62,7 @@ class App extends React.Component{
 
   render() {
     return (
+      <marquee>
       <div className="scoreboard">
         <Header title="My Scoreboard" totalPlayers={11}/>
         {
@@ -79,6 +72,7 @@ class App extends React.Component{
           ))
         }
       </div>
+      </marquee>
     );
   }
 }
