@@ -36,11 +36,11 @@ export const playerReducer = (state = playerInitiialState, action) => {
         players: [...state.players]
       };
     case REMOVE_PLAYER: // player커모넌트
-      const players = state,players.filter(players => playerd !== action.id)
+      const players = state.players.filter(players => players !== action.id)
       return {
         ...
         players
-      }
+      };
     default:
       return state;
   }
