@@ -1,5 +1,8 @@
 // 순서1
-
-export const playerReducer = (state, action) => {
-  return state;
+const playerInitiialState = {
+  title: 'My Scoreboardd'
 }
+
+export const playerReducer = (state = playerInitiialState, action) => {
+  return state;
+};
