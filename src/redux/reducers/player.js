@@ -1,4 +1,6 @@
 // 순서1
+import {UPDATE_USER} from "../actionTypes";
+
 let maxId = 4;
 
 const playerInitiialState = {
@@ -13,7 +15,7 @@ const playerInitiialState = {
 
 export const playerReducer = (state = playerInitiialState, action) => {
   switch(action.type) {
-    case'UPDATE_USER':
+    case UPDATE_USER:
       state.players.push({
         name: action.name,
         id: ++ maxId,
