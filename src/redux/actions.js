@@ -9,3 +9,7 @@ export const changeScore = (id, delta) => ({
   id,
   delta
 })
+export const removePlayer = (id) => ({
+  type: REMOVE_PLAYER,
+  id
+})

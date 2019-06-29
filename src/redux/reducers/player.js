@@ -1,5 +1,5 @@
 // 순서1
-import {CHANGE_SCORE, UPDATE_USER} from "../actionTypes";
+import {CHANGE_SCORE, REMOVE_PLAYER, UPDATE_USER} from "../actionTypes";
 
 let maxId = 4;
 
@@ -35,6 +35,12 @@ export const playerReducer = (state = playerInitiialState, action) => {
         ...state, // 기존 state도 그대로 같이 return 되어야하기때문
         players: [...state.players]
       };
+    case REMOVE_PLAYER: // player커모넌트
+      const players = state,players.filter(players => playerd !== action.id)
+      return {
+        ...
+        players
+      }
     default:
       return state;
   }
