@@ -3,19 +3,11 @@ import './App.css';
 import Header from './components/Header';
 import {Player} from "./components/Player";
 import {AddPlayerForm} from "./components/AddPlayerForm";
+import {connect} from "react-redux";
 
 
 class App extends React.Component{
   maxId = 4;
-
-  state = {
-    players: [
-      {name: 'LDK', id: 1, score: 0},
-      {name: 'HONG', id: 2, score: 0},
-      {name: 'KIM', id: 3, score: 0},
-      {name: 'PARK', id: 4, score: 0},
-    ]
-  };
 
   handleRemovePlayer = (id) => {
     console.log('remove player:', id);
@@ -58,9 +50,9 @@ class App extends React.Component{
   render() {
     return (
       <div className="scoreboard">
-        <Header title="My Scoreboard" players={this.state.players}/>
+        <Header players={this.props.players}/>
         {
-          this.state.players.map(player => (
+          this.props.players.map(player => (
             <Player name={player.name} id={player.id} key={player.id}
                     score={player.score}
                     removePlayer={this.handleRemovePlayer}
@@ -72,27 +64,13 @@ class App extends React.Component{
     );
   }
 }
-//
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <marquee><h1>ㅇㅅㅇ</h1></marquee>
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
-export default App;
+
+// store가 갖고있는 sate를 현재 컴포럴넌의props로 subscribe한다.
+const mapStateToProps = (state) => ({
+  // 왼쪽은 props, 오른쪽은 state가 들어간다
+  players: state.playerReducer.players
+});
+
+// 커링 펑션, HoC // 파라미터 순서 : 부모->자식, 자식->부모
+export default connect(mapStateToProps, null)(App); // 펑션이 만들어짐
