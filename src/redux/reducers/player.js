@@ -1,4 +1,5 @@
 // 순서1
+let maxId = 4;
 
 const playerInitiialState = {
   title: 'My Scoreboardd',
@@ -11,5 +12,18 @@ const playerInitiialState = {
 }
 
 export const playerReducer = (state = playerInitiialState, action) => {
-  return state;
+  switch(action.type) {
+    case'UPDATE_USER':
+      state.players.push({
+        name: action.name,
+        id: ++ maxId,
+        score: 0
+      });
+      return {
+        ...state,
+        players: [...state.players]
+      };
+    default:
+      return state;
+  }
 };
