@@ -1,5 +1,5 @@
 // 순서1
-import {UPDATE_USER} from "../actionTypes";
+import {CHANGE_SCORE, UPDATE_USER} from "../actionTypes";
 
 let maxId = 4;
 
@@ -23,6 +23,16 @@ export const playerReducer = (state = playerInitiialState, action) => {
       });
       return {
         ...state,
+        players: [...state.players]
+      };
+    case CHANGE_SCORE:
+      state.players.forEach(player => {
+        if(player.id === action.id) {
+          player.score += action.delta;
+        }
+      });
+      return { // 기존 state를 딥카피
+        ...state, // 기존 state도 그대로 같이 return 되어야하기때문
         players: [...state.players]
       };
     default:

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Counter} from "./Counter";
+import Counter from "./Counter";
 
 export class Player extends React.Component {
   render() {// 퓨어컴포넌트는 반드시 render함수가 있어야하고 엘리먼트를 리턴해야함. 

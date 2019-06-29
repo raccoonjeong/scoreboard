@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {changeScore} from "../redux/actions";
+import {connect} from "react-redux";
 
-export class Counter extends React.Component {
+class Counter extends React.Component {
   constructor(){
     super(); // 부모의 모든 것을 초기화해주어야하기 때문..
     // this.incrementScore = this.incrementScore.bind(this);
@@ -33,3 +35,11 @@ Counter.propTypes = {
   score: PropTypes.number,
   changeScore: PropTypes.func
 }
+
+// 액션을 디스패치하는 펑션을 props로 매핑
+const mapActionToProps = (dispatch) => ({
+  changeScore: (id, delta) => dispatch(changeScore(id, delta))
+})
+
+// 커링 펑션, HoC // 파라미터 순서 : 부모->자식, 자식->부모
+export default connect(null, mapActionToProps)(Counter); // 펑션이 만들어짐
