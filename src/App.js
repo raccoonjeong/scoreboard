@@ -21,18 +21,6 @@ class App extends React.Component{
    * @param id : 플레이어 아이디
    * @param delta : 증가면 1, 감소면 -1
    */
-  handleChangeScore = (id, delta) => {
-    console.log('change score', id, delta);
-
-    this.setState(prevState => {
-      prevState.players.forEach(player => {
-        if(player.id === id) {
-          player.score += delta;
-        }
-      })
-      return {players: [...prevState.players]} // 새 바구니를 가져와서 기존 바구니 내용을 넣는다. 딥카피
-    })
-  };
   handleAddPlayer = (name) => {
     console.log('add player name: ', name);
     this.setState(prevState => {
@@ -55,8 +43,7 @@ class App extends React.Component{
           this.props.players.map(player => (
             <Player name={player.name} id={player.id} key={player.id}
                     score={player.score}
-                    removePlayer={this.handleRemovePlayer}
-                    changeScore={this.handleChangeScore}/>
+                    removePlayer={this.handleRemovePlayer}/>
           ))
         }
         <AddPlayerForm addPlayer={this.handleAddPlayer}/>
