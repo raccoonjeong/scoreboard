@@ -1,4 +1,4 @@
-import {CHANGE_SCORE, UPDATE_USER} from "./actionTypes";
+import {CHANGE_SCORE, UPDATE_USER, REMOVE_PLAYER} from "./actionTypes";
 
 export const addPlayer = (name) => ({
   type: UPDATE_USER,

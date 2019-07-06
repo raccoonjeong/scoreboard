@@ -30,7 +30,7 @@ export class Menu extends React.Component {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavLink href="/" className="navbar-brand">React</NavLink>
+          <NavLink to="/" className="navbar-brand">React</NavLink>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -38,7 +38,7 @@ export class Menu extends React.Component {
                 <NavLink to="/heroes" className="nav-link">heroes</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/scoreboard">scoreboard</NavLink>
+                <NavLink to="/scoreboard" className="nav-link">scoreboard</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
