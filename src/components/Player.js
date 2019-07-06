@@ -2,6 +2,7 @@ import React from 'react';
 import Counter from "./Counter";
 import {removePlayer} from "../redux/actions";
 import {connect} from "react-redux";
+import styles from '../pages/scoreboard/Scoreboard.module.css';
 
 class Player extends React.Component {
   render() {// 퓨어컴포넌트는 반드시 render함수가 있어야하고 엘리먼트를 리턴해야함. 
@@ -9,9 +10,9 @@ class Player extends React.Component {
     const {removePlayer, id, name, score, changeScore} = this.props;
 
     return (
-      <div className="player">
-    <span className="player-name">
-      <button className="remove-player" onClick={()=>removePlayer(id)}>X</button>
+      <div className={styles.player}>
+    <span className={styles["player-name"]}>
+      <button className={styles["remove-player"]} onClick={()=>removePlayer(id)}>X</button>
       {name}
     </span>
         <Counter score={score} id={id}/>
