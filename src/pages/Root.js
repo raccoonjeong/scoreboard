@@ -4,6 +4,7 @@ import {Home} from "./Home";
 import Scoreboard from "./scoreboard/Scoreboard";
 import {Heroes} from "./heroes/Heroes";
 import {Menu} from "./Menu";
+import {Hero} from "./heroes/Hero";
 
 export class Root extends React.Component {
 
@@ -17,6 +18,7 @@ export class Root extends React.Component {
           <Route exact path="/" component={Home}></Route>
           <Route path="/heroes" component={Heroes}></Route>
           <Route path="/scoreboard" component={Scoreboard}></Route>
+          <Route path="/hero/:id" component={Hero}></Route>
         </Switch>
         </div>
       </BrowserRouter>
