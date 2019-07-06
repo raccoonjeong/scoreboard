@@ -9,17 +9,21 @@ export class Heroes extends React.Component {
   }
   render() {
     return (
-      <ul className="img-box">
+      <div className="row">
         {this.state.heroes.map(hero => (
-          <li key={hero.id} className="row align-items-center m-0">
-            <div className="col-1 py-2">
-              <img src={hero.photo ? hero.photo : process.env.PUBLIC_URL + '/images/baseline-accessibility_new-24px.svg'} alt={hero.name}
-                   className="img-fluid rounded-circle" style={{width: '100%'}} />
+          <div className="col-6 col-md-4 col-lg-3 col-xl-2 p-1 p-sm-2 p-md-3" key={hero.hero_id}>
+            <div className="card">
+              <img src={hero.photo ? hero.photo : process.env.PUBLIC_URL + '/images/baseline-pets-24px.svg'}
+                   style={{width: '100%'}} alt={hero.name}></img>
+              <div className="card-body">
+                <h5 className="card-title">{hero.name}</h5>
+                <p className="card-text">email: {hero.email}</p>
+                <p className="card-text">sex: {hero.sex}</p>
+              </div>
             </div>
-            <span className="col">{hero.name}</span>
-          </li>
-          ))}
-      </ul>
+          </div>
+        ))}
+      </div>
       );
   }
   componentDidMount() {
