@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import axios from '../../utils/api';
+import Pagination from 'rc-pagination';
 
 export class Heroes extends React.Component {
-
   state = {
-    heroes: [],
+    pageSize: 5,
+    totalCount: 115,
+    currentPage: 1,
+    heroes: []
+  };
 
-  }
   render() {
     return (
+      <Fragment>
       <div className="row">
         {this.state.heroes.map(hero => (
           <div className="col-6 col-md-4 col-lg-3 col-xl-2 p-1 p-sm-2 p-md-3" key={hero.hero_id}>
@@ -24,6 +28,12 @@ export class Heroes extends React.Component {
           </div>
         ))}
       </div>
+      <Pagination
+        total={this.state.totalCount}
+        current={this.state.currentPage}
+        pageSize={this.state.pageSize} onChange={this.onChange}
+        className="d-flex justify-content-center"/>
+    </Fragment>
       );
   }
   componentDidMount() {
@@ -32,12 +42,23 @@ export class Heroes extends React.Component {
   };
 
   async getHeroes() {
-    const {data} = await axios.get('/api/user/heroes');
-    console.log(data);
-    this.setState({heroes: data.data})
+    const start_index = (this.state.currentPage - 1) * this.state.pageSize;
+    const res = await axios.get(`/api/user/heroes?start_index=${start_index}&page_size=${this.state.pageSize}`);
+
+    const body=res.data;
+    this.setState({
+      heroes: body.data,
+      totalCount: body.total})
   }
+  onChange = e => {
+    // start_index update
+    this.setState({currentPage: e},
+      ()=> this.getHeroes()
+    );
 
 
-
-
+    // this.setState(prevState=>({
+    //   currentPage:e
+    // }))
+  }
 }
