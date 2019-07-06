@@ -3,11 +3,12 @@ import {Stats} from './Stats';
 import {Stopwatch} from "./Stopwatch";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
+import styles from '../pages/scoreboard/Scoreboard.module.css';
 
 const Header = ({title, players}) => {
   // destruct assignment
   return (
-    <header className="header">
+    <header className={styles.header}>
       <Stats players ={players}/>
       <h1 className="h1">{title}</h1>
       <Stopwatch/>
