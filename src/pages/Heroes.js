@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axios from '../utils/api';
 
 export class Heroes extends React.Component {
 
@@ -25,7 +25,7 @@ export class Heroes extends React.Component {
   };
 
   async getHeroes() {
-    const {data} = await axios.get('http://ec2-15-164-134-124.ap-northeast-2.compute.amazonaws.com:8000/api/user/heroes');
+    const {data} = await axios.get('/api/user/heroes');
     console.log(data);
     this.setState({heroes: data.data})
   }
